@@ -7,9 +7,10 @@ const Team = (props) => {
       key={`${pokemon.id}-${index}`}
       pokemon={pokemon}
       removeFromTeam={props.removeFromTeam}
+      editNickname={props.editNickname}
+      index={index}
     />
   ));
-  console.log(props.team, pokemonArray);
   return <ul>{pokemonArray}</ul>;
 };
 

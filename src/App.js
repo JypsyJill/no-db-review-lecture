@@ -44,12 +44,25 @@ class App extends React.Component {
       .catch((err) => console.log(err));
   };
 
+  editNickname = (index, nickname) => {
+    axios
+      .put(`/api/team/${index}`, { nickname })
+      .then((res) => {
+        this.setState({ team: res.data });
+      })
+      .catch((err) => console.log(err));
+  };
+
   render() {
     return (
       <div>
         <Header />
         <main className="main-box">
-          <Team team={this.state.team} removeFromTeam={this.removeFromTeam} />
+          <Team
+            team={this.state.team}
+            removeFromTeam={this.removeFromTeam}
+            editNickname={this.editNickname}
+          />
           <Pokedex addToTeam={this.addToTeam} />
         </main>
       </div>
